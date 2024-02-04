@@ -117,3 +117,40 @@ var romanToInt = function (s) {
     return r
 };
 
+
+//Shuffle string #1528
+
+var restoreString = function (s, indices) {
+    const arr = new Array(s.length)
+    for (let i = 0; i < indices.length; i++) {
+        arr[indices[i]] = s[i]
+    }
+
+    return arr.join('')
+
+};
+
+//Jewels and stones #771
+
+var numJewelsInStones = function (jewels, stones) {
+    let map = new Map();
+    let count = 0;
+
+    jewels.split('').forEach((el) => {
+        map.set(el, 0)
+    })
+
+    for (let i = 0; i < stones.length; i++) {
+        if (map.has(stones[i])) {
+            let temp = map.get(stones[i]) + 1
+            map.set(stones[i], temp)
+        }
+    }
+
+
+    map.forEach((values, keys) => {
+        count += values
+    })
+
+    return count
+};

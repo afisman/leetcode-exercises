@@ -158,3 +158,83 @@ var merge = function (nums1, m, nums2, n) {
         }
     }
 };
+
+//Shuffle the Array #1470
+
+var shuffle = function (nums, n) {
+
+    const result = [];
+    for (let i = 0; i < n; i++) {
+        result.push(nums[i]);
+        result.push(nums[i + n])
+    }
+
+    return result
+
+};
+
+//Running sum of 1d Array #1480
+
+var runningSum = function (nums) {
+    const result = [];
+    for (let i = 0; i < nums.length; i++) {
+        if (i === 0) {
+            result.push(nums[i])
+        } else {
+            result.push(nums[i] + result[i - 1])
+        }
+    }
+
+    return result
+};
+
+//Average salary Excluding the min and max value #1491
+
+var average = function (salary) {
+    let minValue = Math.min(...salary);
+    let maxValue = Math.max(...salary);
+
+    let result = 0
+    let count = 0
+
+    salary.forEach((el) => {
+        if (el !== minValue && el !== maxValue) {
+            result += el
+            count++
+        }
+    })
+
+    return result / count
+};
+
+//Three consecutive odds #1550
+
+var threeConsecutiveOdds = function (arr) {
+    for (let i = 1; i < arr.length - 1; i++) {
+        if (arr[i - 1] % 2 !== 0 && arr[i] % 2 !== 0 && arr[i + 1] % 2 !== 0) {
+            return true
+        }
+    }
+
+    return false
+};
+
+//Contains Duplicate II #219
+
+var containsNearbyDuplicate = function (nums, k) {
+    const map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        if (map.has(`${nums[i]}`) !== true) {
+            map.set(`${nums[i]}`, i)
+        } else {
+            if (Math.abs(map.get(`${nums[i]}`) - i) <= k) {
+                return true
+            } else {
+                map.set(`${nums[i]}`, i)
+
+            }
+        }
+    }
+
+    return false
+};
