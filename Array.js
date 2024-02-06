@@ -278,3 +278,27 @@ var rotate = function (matrix) {
     }
     return matrix;
 };
+
+//Sort students by their Kth score //2545
+
+var sortTheStudents = function (score, k) {
+
+
+    for (let i = 0; i < score.length; i++) {
+        for (let j = 0; j < (score.length - 1) - i; j++) {
+            if (score[j][k] < score[j + 1][k]) {
+                temp = score[j + 1];
+                score[j + 1] = score[j];
+                score[j] = temp
+            }
+        }
+    }
+
+    return score
+};
+
+var sortTheStudents = function (score, k) {
+    const newMatrix = score.sort((a, b) => a[k] < b[k] ? 1 : -1)
+
+    return newMatrix
+};
