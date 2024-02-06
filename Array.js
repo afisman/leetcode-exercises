@@ -238,3 +238,43 @@ var containsNearbyDuplicate = function (nums, k) {
 
     return false
 };
+
+//Group anagrams #49
+
+var groupAnagrams = function (strs) {
+    const map = new Map();
+    let arr = [];
+
+    for (let i = 0; i < strs.length; i++) {
+        let str = strs[i].split('').reverse().sort((a, b) => a > b ? 1 : -1).join('');
+
+        if (map.has(str)) {
+            let temp = map.get(str)
+            map.set(str, [...temp, strs[i]])
+        } else {
+            map.set(str, [strs[i]])
+        }
+    }
+
+    for (const [key, values] of map) {
+        arr.push(values)
+    }
+
+    return arr
+};
+
+//Rotate image #48
+
+var rotate = function (matrix) {
+    var n = matrix.length;
+    for (var i = 0; i < n / 2; i++) {
+        for (var j = i; j < n - i - 1; j++) {
+            var tmp = matrix[i][j];
+            matrix[i][j] = matrix[n - j - 1][i];
+            matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1];
+            matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];
+            matrix[j][n - i - 1] = tmp;
+        }
+    }
+    return matrix;
+};
