@@ -302,3 +302,18 @@ var sortTheStudents = function (score, k) {
 
     return newMatrix
 };
+
+//How many numbers are smaller than the current number #1365
+
+var smallerNumbersThanCurrent = function (nums) {
+    let res = [];
+    for (let i of nums) {
+        let c = nums.reduce((count, num) => {
+            if (num < i) count++;
+            return count;
+        }, 0);
+        res.push(c);
+    }
+
+    return res;
+};
