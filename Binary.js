@@ -78,3 +78,30 @@ var divide = function (dividend, divisor) {
 
     return sign ? -quotient : quotient
 }
+
+//Sort by bits #1356
+
+var sortByBits = function (arr) {
+    const res = new Array(arr.length);
+
+    for (let i = 0; i < arr.length; i++) {
+        res[i] = countBit(arr[i]) * 10001 + arr[i];
+    }
+
+    res.sort((a, b) => a - b);
+
+    for (let i = 0; i < arr.length; i++) {
+        res[i] %= 10001;
+    }
+
+    return res
+};
+
+function countBit(n) {
+    let res = 0;
+    while (n !== 0) {
+        res += (n & 1);
+        n >>= 1;
+    }
+    return res;
+}

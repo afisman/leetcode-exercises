@@ -189,3 +189,31 @@ var sortVowels = function (s) {
     }
     return output.join('');
 };
+
+//Decode message #2325
+
+var decodeMessage = function (key, message) {
+    const map = new Map();
+
+    let newMessage = ''
+
+
+    let arr = key.split('')
+    arr = arr.filter((el, index) => el !== ' ' && arr.indexOf(el) === index)
+
+
+    for (let i = 0; i < arr.length; i++) {
+        let char = String.fromCharCode(i + 97)
+        map.set(arr[i], char)
+    }
+    for (let i = 0; i < message.length; i++) {
+        if (message[i] === ' ') {
+            newMessage += message[i]
+        } else {
+            newMessage += map.get(message[i])
+
+        }
+    }
+
+    return newMessage
+};
