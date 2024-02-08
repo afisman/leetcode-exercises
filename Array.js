@@ -317,3 +317,49 @@ var smallerNumbersThanCurrent = function (nums) {
 
     return res;
 };
+
+//Maximum number of pairs in array #2341
+
+var numberOfPairs = function (nums) {
+    let count = 0;
+    let rest = 0;
+    let map = new Map();
+
+    for (let i = 0; i < nums.length; i++) {
+        if (map.has(nums[i])) {
+            let temp = map.get(nums[i]) + 1
+            map.set(nums[i], temp)
+        } else {
+            map.set(nums[i], 1)
+
+        }
+
+    }
+    console.log(map)
+    for (let [key, values] of map) {
+        if (values % 2 === 0) {
+            count += values / 2
+        } else if ((values - 1) % 2 === 0 && values > 1) {
+            rest++;
+            count += (values - 1) / 2
+        } else {
+            rest++
+        }
+    }
+
+    return [count, rest]
+};
+
+var numberOfPairs = function (nums) {
+    const m = new Set();
+    let pCnt = 0;
+    for (const num of nums) {
+        if (m.has(num)) {
+            m.delete(num);
+            pCnt++;
+        } else {
+            m.add(num);
+        }
+    }
+    return [pCnt, m.size];
+};
