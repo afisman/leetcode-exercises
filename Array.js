@@ -382,3 +382,23 @@ var flipAndInvertImage = function (image) {
     return image
 };
 
+//Two out of three #2032
+
+var twoOutOfThree = function (nums1, nums2, nums3) {
+    let num = [...new Set(nums1), ...new Set(nums2), ...new Set(nums3)]
+
+    let arr = []
+
+    let freq = _.countBy(num)
+
+    let keys = Object.keys(freq)
+
+    keys.forEach(key => {
+        if (freq[key] >= 2) {
+            arr.push(key)
+        }
+    })
+
+    return arr
+};
+

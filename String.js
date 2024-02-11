@@ -265,3 +265,37 @@ var checkIfPangram = function (sentence) {
     }
 
 };
+
+//Check if all characters have equal number of ocurrences #1941
+
+var areOccurrencesEqual = function (s) {
+    let map = new Map()
+
+    for (let i = 0; i < s.length; i++) {
+        if (map.has(s[i])) {
+            let temp = map.get(s[i]) + 1
+
+            map.set(s[i], temp)
+        } else {
+
+            map.set(s[i], 1)
+        }
+
+    }
+
+    let result = true
+
+    let ocurrence
+
+    for (let i = 0; i < s.length; i++) {
+        if (i === 0) {
+            ocurrence = map.get(s[i])
+        }
+
+        if (map.get(s[i]) !== ocurrence) {
+            return false
+        }
+    }
+
+    return result
+};
