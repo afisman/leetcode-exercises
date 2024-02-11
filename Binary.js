@@ -105,3 +105,23 @@ function countBit(n) {
     }
     return res;
 }
+
+
+//Binary number with alternating bits #693
+
+var hasAlternatingBits = function (n) {
+    let temp = '';
+
+    let binary = (n >>> 0).toString(2);
+
+    console.log(typeof (binary))
+
+    for (let i = 0; i < binary.length; i++) {
+        if (temp === binary[i]) {
+            return false
+        }
+
+        temp = binary[i]
+    }
+    return true
+};

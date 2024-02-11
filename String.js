@@ -220,24 +220,48 @@ var decodeMessage = function (key, message) {
 
 //Valid palindrome II #680
 
-var validPalindrome = function(s, corrections = 1) {
-     let lo = 0;
-  let hi = s.length - 1;
-  
-  while (lo < hi) {
-    if (s[lo] === s[hi]) {
-      lo++;
-      hi--;
-      continue;
+var validPalindrome = function (s, corrections = 1) {
+    let lo = 0;
+    let hi = s.length - 1;
+
+    while (lo < hi) {
+        if (s[lo] === s[hi]) {
+            lo++;
+            hi--;
+            continue;
+        }
+
+        if (corrections === 0) {
+            return false;
+        }
+
+        return validPalindrome(s.slice(lo, hi), 0)
+            || validPalindrome(s.slice(lo + 1, hi + 1), 0);
     }
-    
-    if (corrections === 0) {
-      return false;
+
+    return true;
+};
+
+//Check pangram #1832
+
+var checkIfPangram = function (sentence) {
+
+    if (sentence.length < 26) {
+        return false
     }
-    
-    return validPalindrome(s.slice(lo, hi), 0) 
-      || validPalindrome(s.slice(lo + 1, hi + 1), 0);
-  }
-  
-  return true;
+
+    let map = new Map()
+
+    for (let i = 0; i < sentence.length; i++) {
+        if (!map.has(sentence[i])) {
+            map.set(sentence[i], 1)
+        }
+    }
+
+    if (map.size === 26) {
+        return true
+    } else {
+        return false
+    }
+
 };
