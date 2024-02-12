@@ -402,3 +402,44 @@ var twoOutOfThree = function (nums1, nums2, nums3) {
     return arr
 };
 
+
+//Longest increasing subsequence #300
+
+var lengthOfLIS = function (nums) {
+    const dp = new Array(nums.length).fill(1)
+    for (let i = 1; i < nums.length; i++) {
+        for (let j = 0; j < i; j++) {
+            if (nums[j] < nums[i]) {
+                dp[i] = Math.max(dp[i], dp[j] + 1);
+            }
+        }
+    }
+
+    return Math.max(...dp)
+};
+
+//Majority element #169
+
+var majorityElement = function (nums) {
+    let map = new Map()
+    let result = 0
+    let max = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        if (map.has(nums[i])) {
+            let temp = map.get(nums[i]) + 1
+            map.set(nums[i], temp)
+        } else {
+            map.set(nums[i], 1)
+        }
+    }
+
+    for (let [keys, value] of map) {
+        if (value > max) {
+            max = value;
+            result = keys
+        }
+    }
+
+    return result
+};
