@@ -443,3 +443,21 @@ var majorityElement = function (nums) {
 
     return result
 };
+
+//Find median of two sorted arrays #4
+
+var findMedianSortedArrays = function (nums1, nums2) {
+    const nums3 = [...nums1, ...nums2].sort((a, b) => a > b ? 1 : -1)
+    if (nums3.length % 2 !== 0) {
+        let z = Math.floor(nums3.length / 2);
+        return nums3[z];
+    } else {
+        let z = nums3.length / 2;
+        let e = nums3[z];
+        let q = nums3[z - 1];
+        let ans = (e + q) / 2;
+        return ans;
+    }
+
+
+};
