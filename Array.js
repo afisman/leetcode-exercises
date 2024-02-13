@@ -458,6 +458,15 @@ var findMedianSortedArrays = function (nums1, nums2) {
         let ans = (e + q) / 2;
         return ans;
     }
+};
 
+//Sort the people #2418
 
+var sortPeople = function (names, heights) {
+    const map = new Map()
+    for (let i = 0; i < heights.length; i++) {
+        map.set(heights[i], names[i])
+    }
+
+    return [...map.entries()].sort((a, b) => b[0] - a[0]).map(v => v[1])
 };
