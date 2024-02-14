@@ -470,3 +470,76 @@ var sortPeople = function (names, heights) {
 
     return [...map.entries()].sort((a, b) => b[0] - a[0]).map(v => v[1])
 };
+
+//Most frequent even #2404
+
+var mostFrequentEven = function (nums) {
+    let map = new Map()
+    let result
+
+    for (let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+        if (!(num % 2)) {
+            const newValue = map.get(num) + 1;
+            map.set(num, map.has(num) ? newValue : 1);
+            if (result === undefined || newValue > map.get(result)) {
+                result = num
+            } else if (map.get(num) === map.get(result)) {
+                result = Math.min(num, result)
+            }
+        }
+    }
+
+
+    return result === undefined ? -1 : result
+};
+
+//Similar pair of words #2506
+
+var similarPairs = function (words) {
+    let result = 0
+
+    for (let i = 0; i < words.length; i++) {
+        for (let j = 0; j < words.length; j++) {
+            let firstWord = [...new Set(words[i])].sort((a, b) => (a > b ? 1 : -1)).join('')
+            let secondWord = [...new Set(words[j])].sort((a, b) => (a > b ? 1 : -1)).join('')
+
+            if (i !== j && firstWord === secondWord) {
+                result++
+            }
+        }
+    }
+
+    return result / 2
+};
+
+var similarPairs = function (words) {
+
+
+    let result = 0;
+    let map = new Map();
+
+    for (let word of words) {
+        let v = 0;
+        for (let i = 0; i < word.length; ++i) v |= 1 << (word.charCodeAt(i) - 97);
+        result += map.get(v) || 0
+        map.set(v, (map.get(v) || 0) + 1)
+    }
+
+    return result
+};
+
+//Rearrange array of elements by sign #2149
+
+var rearrangeArray = function (nums) {
+    let arr1 = nums.filter(el => el >= 0)
+    let arr2 = nums.filter(el => el < 0)
+    let arr3 = []
+
+    for (let i = 0; i < arr1.length; i++) {
+        arr3.push(arr1[i])
+        arr3.push(arr2[i])
+    }
+
+    return arr3
+};
