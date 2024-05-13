@@ -122,3 +122,15 @@ const largestDivisor = (num) => {
 
     return sqrt
 }
+
+
+//2160. Minimum Sum of Four Digit Number After Splitting Digits
+
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var minimumSum = function (num) {
+    let arr = num.toString().split('').sort((a, b) => a - b)
+    return (Number(arr[0] + arr[2])) + (Number(arr[1] + arr[3]))
+};
