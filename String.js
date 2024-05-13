@@ -368,3 +368,21 @@ var letterCombinations = function (digits) {
     }
     return iterate(digits)
 };
+
+//2828 is Acronym
+
+/**
+ * @param {string[]} words
+ * @param {string} s
+ * @return {boolean}
+ */
+var isAcronym = function (words, s) {
+    let resultArr = '';
+
+    for (const word of words) {
+        resultArr += word[0];
+    }
+
+    return resultArr === s;
+
+};
