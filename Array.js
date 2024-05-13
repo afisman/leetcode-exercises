@@ -543,3 +543,19 @@ var rearrangeArray = function (nums) {
 
     return arr3
 };
+
+
+//1672. Richest Customer Wealth
+/**
+ * @param {number[][]} accounts
+ * @return {number}
+ */
+var maximumWealth = function (accounts) {
+    let result = 0;
+    for (let i = 0; i < accounts.length; i++) {
+        let tempResult = accounts[i].reduce((acc, curr) => acc += curr, 0)
+        result = Math.max(result, tempResult)
+    }
+
+    return result
+};
