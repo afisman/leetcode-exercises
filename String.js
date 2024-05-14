@@ -386,3 +386,78 @@ var isAcronym = function (words, s) {
     return resultArr === s;
 
 };
+
+//Ransom note
+
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+var canConstruct = function (ransomNote, magazine) {
+    if (ransomNote.length > magazine.length) return false;
+
+    let map = new Map();
+    for (let i = 0; i < magazine.length; i++) {
+        let inMap = map.get(magazine[i]);
+        if (inMap) {
+            map.set(magazine[i], inMap + 1)
+        } else {
+            map.set(magazine[i], 1);
+        }
+    }
+
+    let map1 = new Map();
+
+    for (let i = 0; i < ransomNote.length; i++) {
+        let inMap = map1.get(ransomNote[i]);
+        if (inMap) {
+            map1.set(ransomNote[i], inMap + 1)
+        } else {
+            map1.set(ransomNote[i], 1);
+        }
+    }
+
+    let canWrite = true;
+
+    for (let [key, value] of map1) {
+        if (map1.get(key) > map.get(key) || !map.get(key)) {
+            canWrite = false;
+        }
+    }
+
+    return canWrite
+};
+
+//1704 Halves are alike
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var halvesAreAlike = function (s) {
+    let str1 = s.slice(0, s.length / 2);
+    let str2 = s.slice(s.length / 2, s.length);
+
+    let count1 = 0;
+    let count2 = 0;
+
+    for (let i = 0; i < str1.length; i++) {
+        if (isVowel(str1[i])) {
+            count1++;
+        }
+        if (isVowel(str2[i])) {
+            count2++;
+        }
+    }
+
+    return count1 === count2;
+};
+
+var isVowel = (x) => {
+    if (x === 'a' || x === 'e' || x === 'i' || x === 'o' || x === 'u' || x === 'A' || x === 'E' || x === 'I' || x === 'O' || x === 'U') {
+        return true
+    } else {
+        return false
+    }
+}

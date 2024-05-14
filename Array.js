@@ -566,31 +566,46 @@ var maximumWealth = function (accounts) {
  * @param {number[][]} img
  * @return {number[][]}
  */
-var imageSmoother = function(img) {
-    let n = img.length ;
+var imageSmoother = function (img) {
+    let n = img.length;
     let m = img[0].length;
     let newImg = new Array(n).fill(0).map(() => new Array(m).fill(0));
 
-    const isValid = (i,j) => i >= 0 && i < n && j >= 0 && j < m;
+    const isValid = (i, j) => i >= 0 && i < n && j >= 0 && j < m;
 
     const getSum = (i, j) => {
         let sum = 0, count = 0;
-        for(let x = i -1; x<= i+1; x++) {
-            for(let y = j-1; y <= j+1; y++) {
-                if(isValid(x,y)) {
+        for (let x = i - 1; x <= i + 1; x++) {
+            for (let y = j - 1; y <= j + 1; y++) {
+                if (isValid(x, y)) {
                     sum += img[x][y];
                     count++;
                 }
             }
         }
-        return Math.floor(sum/count);
+        return Math.floor(sum / count);
     }
 
-    for(let i = 0; i <n; i++) {
-        for(let j = 0; j < m; j++) {
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < m; j++) {
             newImg[i][j] = getSum(i, j);
         }
     }
     return newImg;
 };
 
+
+//80 remove duplicate from II
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function (nums) {
+    for (let i = nums.length - 1; i > 0; i--) {
+        if (nums[i] === nums[i - 1] && nums[i] === nums[i - 2]) {
+            nums.splice(i, 1)
+        }
+    }
+    return nums.length;
+};
