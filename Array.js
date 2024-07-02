@@ -619,3 +619,24 @@ var findCenter = function (edges) {
         return edges[0][0];
     }
 };
+
+//11 Container with more water
+
+var maxArea = function (height) {
+    let maxSum = 0;
+    let i = 0;
+    let j = height.length - 1;
+
+    while (i < j) {
+        let maxHeight = Math.min(height[i], height[j]);
+        let volume = maxHeight * (j - i);
+        maxSum = Math.max(maxSum, volume);
+        if (height[j] > height[i]) {
+            i++;
+        } else {
+            j--;
+        }
+    }
+
+    return maxSum;
+};
