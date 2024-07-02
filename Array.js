@@ -609,3 +609,13 @@ var removeDuplicates = function (nums) {
     }
     return nums.length;
 };
+
+// 1791 Find center of star graph
+
+var findCenter = function (edges) {
+    if (edges[0][1] === edges[1][0] || edges[0][1] === edges[1][1]) {
+        return edges[0][1];
+    } else {
+        return edges[0][0];
+    }
+};

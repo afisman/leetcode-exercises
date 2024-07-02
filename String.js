@@ -461,3 +461,46 @@ var isVowel = (x) => {
         return false
     }
 }
+
+//290 Word pattern
+
+/**
+ * @param {string} pattern
+ * @param {string} s
+ * @return {boolean}
+ */
+var wordPattern = function (pattern, s) {
+    let map = new Map();
+
+    let arr = s.split(' ');
+
+    if (arr.length !== pattern.length) return false
+
+    for (let i = 0; i < pattern.length; i++) {
+        let inMap = map.get(pattern[i])
+        if (!inMap) {
+            if (!keyValue(map, arr[i])) {
+                map.set(pattern[i], arr[i]);
+            } else {
+                return false;
+            }
+        } else if (map.get(pattern[i]) !== arr[i]) {
+            console.log(map.get(pattern[i]), arr[i], i)
+            return false;
+        }
+
+    }
+
+    return true;
+};
+
+
+
+function keyValue(map, searchKey) {
+    for (const [key, value] of map.entries()) {
+        console.log(searchKey, key)
+        if (value === searchKey)
+            return key;
+    }
+    return undefined;
+} 
