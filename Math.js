@@ -134,3 +134,20 @@ var minimumSum = function (num) {
     let arr = num.toString().split('').sort((a, b) => a - b)
     return (Number(arr[0] + arr[2])) + (Number(arr[1] + arr[3]))
 };
+
+//2582 Pass the pillow
+
+var passThePillow = function (n, time) {
+
+    time = time % ((n - 1) * 2);
+
+    if (time <= (n - 1)) {
+        return 1 + time;
+    }
+    else {
+        time -= (n - 1);
+
+        return n - time;
+    }
+
+};
