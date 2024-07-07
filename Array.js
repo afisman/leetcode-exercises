@@ -640,3 +640,16 @@ var maxArea = function (height) {
 
     return maxSum;
 };
+
+//414 Third maximum number
+
+var thirdMax = function (nums) {
+    nums = Array.from(new Set(nums));
+    nums.sort((a, b) => b - a);
+
+    if (nums.length < 3) {
+        return nums[0];
+    }
+
+    return nums[2]
+};
