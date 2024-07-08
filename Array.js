@@ -653,3 +653,31 @@ var thirdMax = function (nums) {
 
     return nums[2]
 };
+
+//1823 Find winner of circular game
+
+var findTheWinner = function (n, k) {
+    let circle = [];
+    for (let i = 1; i <= n; i++) {
+        circle.push(i);
+    }
+
+    let current = 0;
+
+    while (circle.length > 1) {
+        let next_to_remove = (current + k - 1) % circle.length;
+        circle.splice(next_to_remove, 1);
+        current = next_to_remove;
+    }
+
+    return circle[0]
+};
+
+var findTheWinner = function (n, k) {
+    let winner = 0;
+
+    for (let i = 2; i <= n; i++) {
+        winner = (winner + k) % i;
+    }
+    return winner + 1;
+};
