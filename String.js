@@ -503,4 +503,14 @@ function keyValue(map, searchKey) {
             return key;
     }
     return undefined;
-} 
+}
+
+//520 Detect Capital
+
+var detectCapitalUse = function (word) {
+    let upper = word.toUpperCase();
+    let lower = word.toLowerCase();
+    let oneChar = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
+    if (upper === word || lower === word || oneChar === word) return true;
+    return false;
+};
