@@ -681,3 +681,19 @@ var findTheWinner = function (n, k) {
     }
     return winner + 1;
 };
+
+//1598 Crawler log folder
+
+var minOperations = function (logs) {
+    let curr = 0;
+    for (let i = 0; i < logs.length; i++) {
+        if (logs[i] == "../" && curr > 0) {
+            curr--;
+        } else if (logs[i] != "../" && logs[i] != "./") {
+            curr++
+        }
+    }
+
+    return curr;
+
+};
