@@ -697,3 +697,25 @@ var minOperations = function (logs) {
     return curr;
 
 };
+
+//506 Relative Ranks
+
+var findRelativeRanks = function (score) {
+
+    let sorted = [...score].sort((a, b) => b - a);
+
+    const ranks = ["Bronze Medal", "Silver Medal", "Gold Medal"];
+
+    const results = [];
+
+    for (let i = 0; i < score.length; i++) {
+        let index = score.indexOf(sorted[i])
+        if (ranks.length !== 0) {
+            results[index] = ranks.pop();
+        } else {
+            results[index] = `${i + 1}`
+        }
+    }
+
+    return results;
+};
