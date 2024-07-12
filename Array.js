@@ -719,3 +719,23 @@ var findRelativeRanks = function (score) {
 
     return results;
 };
+
+//896 Monotonic array
+
+var isMonotonic = function (nums) {
+    let isIncreasing = true;
+    let isDecreasing = true;
+    for (let i = 1; i < nums.length; i++) {
+        if (isDecreasing === false && isIncreasing === false) return false;
+        if (nums[i] > nums[i - 1]) {
+            isDecreasing = false;
+        }
+
+        if (nums[i] < nums[i - 1]) {
+            isIncreasing = false;
+        }
+
+    }
+
+    return isDecreasing || isIncreasing;
+};
