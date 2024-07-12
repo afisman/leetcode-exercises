@@ -739,3 +739,24 @@ var isMonotonic = function (nums) {
 
     return isDecreasing || isIncreasing;
 };
+
+// 941 Valid Mountain Array
+
+var validMountainArray = function (arr) {
+    if (arr.length < 3) return false;
+    let asc;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i + 1] && arr[i + 1] > arr[i] && (asc || asc === undefined)) {
+            asc = true;
+        } else if (arr[i + 1] && arr[i + 1] < arr[i] && asc) {
+            asc = false;
+        } else if (arr[i + 1] && arr[i + 1] < arr[i] && asc === false) {
+            asc = false
+        } else if (arr[i + 1]) {
+            return false
+        }
+    }
+
+    return asc === false
+};
