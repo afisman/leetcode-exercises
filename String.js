@@ -514,3 +514,33 @@ var detectCapitalUse = function (word) {
     if (upper === word || lower === word || oneChar === word) return true;
     return false;
 };
+
+
+//819 Most common word
+
+var mostCommonWord = function (paragraph, banned) {
+
+    let arr = paragraph.toLowerCase().replace(/[^\w\s]/g, ' ').split(' ');
+    let map = new Map();
+
+    for (let i = 0; i < arr.length; i++) {
+        let numOfTimes = map.get(arr[i]);
+        if (numOfTimes) {
+            map.set(arr[i], (numOfTimes + 1));
+        } else {
+            map.set(arr[i], 1)
+        }
+    }
+
+    let max = 0;
+    let result = '';
+
+    for (let [key, value] of map) {
+        if (!banned.includes(key) && value > max && key !== '') {
+            max = value;
+            result = key;
+        }
+    }
+
+    return result;
+};
