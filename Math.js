@@ -183,3 +183,17 @@ var isPowerOfThree = function (n) {
 
     return n == 1
 };
+
+//342 Power of four
+
+var isPowerOfFour = function (n) {
+    while (n > 1) {
+        if (n % 4 == 0) {
+            n = n / 4;
+        } else {
+            break
+        }
+    }
+
+    return n == 1
+};
