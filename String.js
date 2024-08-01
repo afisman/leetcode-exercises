@@ -563,3 +563,22 @@ var findTheDifference = function (s, t) {
 
     return Array.from(map.keys())[0];
 };
+
+//3146 Permutation difference between two strings
+
+var findPermutationDifference = function (s, t) {
+    const map = new Map();
+
+    let count = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        map.set(s[i], [i, t.indexOf(s[i])]);
+    }
+
+    for (const [key, value] of map) {
+        count += Math.abs(value[0] - value[1]);
+    }
+
+    return count;
+
+};

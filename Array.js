@@ -793,3 +793,4 @@ var countCompleteDayPairs = function (hours) {
     return count
 
 };
+
