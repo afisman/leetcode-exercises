@@ -197,3 +197,8 @@ var isPowerOfFour = function (n) {
 
     return n == 1
 };
+
+//2549 Count distinct numbers on the board
+var distinctIntegers = function (n) {
+    return n == 1 ? 1 : n - 1
+};
