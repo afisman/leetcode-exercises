@@ -794,3 +794,32 @@ var countCompleteDayPairs = function (hours) {
 
 };
 
+
+//2053 kth distinct string in array
+
+var kthDistinct = function (arr, k) {
+    let map = new Map();
+    for (let i = 0; i < arr.length; i++) {
+        let iCount = map.get(arr[i]);
+        if (iCount) {
+            map.set(arr[i], iCount + 1);
+        } else {
+            map.set(arr[i], 1)
+        }
+    }
+
+    let count = 0;
+
+    for (let [key, value] of map) {
+        if (value == 1) {
+            count++
+            if (count == k) {
+                return key
+            }
+        }
+    }
+
+    return ""
+
+};
+
