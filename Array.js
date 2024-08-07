@@ -823,3 +823,24 @@ var kthDistinct = function (arr, k) {
 
 };
 
+//2667 Chunk array
+
+var chunk = function (arr, size) {
+    if (arr.length === 0) return arr;
+    if (arr.length === size) return [arr];
+
+    let arr2 = [];
+    let i = 0;
+    let j = size;
+
+    while (i < arr.length) {
+        const tempArr = arr.slice(i, j);
+        arr2.push(tempArr);
+        i += size;
+        j += size;
+    }
+
+    return arr2;
+
+};
+
