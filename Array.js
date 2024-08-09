@@ -844,3 +844,27 @@ var chunk = function (arr, size) {
 
 };
 
+//1207 Find unique ocurrences
+
+var uniqueOccurrences = function (arr) {
+    let map = new Map();
+
+    for (let i = 0; i < arr.length; i++) {
+        if (!map.get(arr[i])) {
+            map.set(arr[i], 1);
+        } else {
+            map.set(arr[i], map.get(arr[i]) + 1);
+        }
+    }
+    let arr2 = [];
+    for (let [key, value] of map) {
+        if (arr2.includes(value)) {
+            return false;
+        } else {
+            arr2.push(value);
+        }
+    }
+
+    return true;
+};
+
