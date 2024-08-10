@@ -883,6 +883,10 @@ var frequencySort = function (nums) {
     }
 
     return nums.sort((a, b) => map.get(a) - map.get(b) || b - a)
+};
 
+//2724 sort by
 
+var sortBy = function (arr, fn) {
+    return arr.sort((a, b) => { return fn(a) - fn(b) })
 };
