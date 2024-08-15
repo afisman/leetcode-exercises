@@ -939,3 +939,18 @@ var lemonadeChange = function (bills) {
     }
     return true;
 };
+
+//2037 Minimum moves to seat everyone
+
+var minMovesToSeat = function (seats, students) {
+    let seats2 = seats.sort((a, b) => a - b);
+    let students2 = students.sort((a, b) => a - b);
+    let count = 0;
+
+    for (let i = 0; i < seats2.length; i++) {
+        if (seats2[i] !== students2[i]) {
+            count += Math.abs(seats2[i] - students2[i])
+        }
+    }
+    return count;
+};
