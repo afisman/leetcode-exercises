@@ -894,13 +894,48 @@ var sortBy = function (arr, fn) {
 
 //Arithmetic triplets
 
-var arithmeticTriplets = function(nums, diff) {
+var arithmeticTriplets = function (nums, diff) {
     let count = 0;
-    for(let num of nums) {
-        if(nums.includes(num +diff) && nums.includes(num+diff*2)) {
+    for (let num of nums) {
+        if (nums.includes(num + diff) && nums.includes(num + diff * 2)) {
             count++
         }
     }
 
     return count;
+};
+
+//Leonade change
+
+var lemonadeChange = function (bills) {
+
+    if (bills[0] !== 5) return false;
+
+    let obj = {
+        five: 0,
+        ten: 0
+    }
+
+    for (let i = 0; i < bills.length; i++) {
+        if (bills[i] == 5) {
+            obj.five += 5;
+        } else if (bills[i] == 20) {
+            if (obj.five >= 5 && obj.ten >= 10) {
+                obj.five -= 5;
+                obj.ten -= 10;
+            } else if (obj.five >= 15) {
+                obj.five -= 15;
+            } else {
+                return false;
+            }
+        } else {
+            if (obj.five >= 5) {
+                obj.ten += 10;
+                obj.five -= 5;
+            } else {
+                return false;
+            }
+        }
+    }
+    return true;
 };
