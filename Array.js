@@ -890,3 +890,17 @@ var frequencySort = function (nums) {
 var sortBy = function (arr, fn) {
     return arr.sort((a, b) => { return fn(a) - fn(b) })
 };
+
+
+//Arithmetic triplets
+
+var arithmeticTriplets = function(nums, diff) {
+    let count = 0;
+    for(let num of nums) {
+        if(nums.includes(num +diff) && nums.includes(num+diff*2)) {
+            count++
+        }
+    }
+
+    return count;
+};
