@@ -954,3 +954,16 @@ var minMovesToSeat = function (seats, students) {
     }
     return count;
 };
+
+//1984 Minimum difference bewtween highest and lowest of k scores
+
+var minimumDifference = function (nums, k) {
+    nums = nums.sort((a, b) => a - b);
+    let minDiff = 8000000000000;
+
+    for (let i = 0; i < nums.length - k + 1; i++) {
+        minDiff = Math.min(minDiff, nums[i + k - 1] - nums[i])
+    }
+
+    return minDiff;
+};
