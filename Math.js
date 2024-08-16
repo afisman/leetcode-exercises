@@ -220,3 +220,34 @@ var differenceOfSums = function (n, m) {
     return num1 - num2;
 
 };
+
+//Substract product and sum
+
+var subtractProductAndSum = function (n) {
+    let mul = 1;
+    let sum = 0;
+
+
+    n.toString().split('').forEach((num) => {
+        sum = +num + sum;
+        mul = +num * mul;
+    });
+    return (mul - sum);
+};
+
+var subtractProductAndSum = function (n) {
+    let sum = 0;
+    let pro = 1;
+    let arr = n.toString().split('');
+
+    while (n > 0) {
+        const dig = n % 10
+        sum += dig;
+        pro *= dig;
+
+        n = Math.floor(n / 10)
+    }
+
+    return pro - sum;
+
+};
