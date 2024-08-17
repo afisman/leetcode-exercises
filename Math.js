@@ -251,3 +251,21 @@ var subtractProductAndSum = function (n) {
     return pro - sum;
 
 };
+
+//Can Alice win the numbers game
+
+var canAliceWin = function (nums) {
+    let aCount = 0;
+    let bCount = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] < 10) {
+            aCount += nums[i];
+        } else {
+            bCount += nums[i];
+        }
+    }
+
+    return aCount !== bCount;
+
+};
