@@ -269,3 +269,29 @@ var canAliceWin = function (nums) {
     return aCount !== bCount;
 
 };
+
+//728 Self dividing numbers
+
+var selfDividingNumbers = function (left, right) {
+    let result = []
+    for (let i = left; i <= right; i++) {
+        if (isSelfDividing(i)) {
+            result.push(i)
+        }
+    }
+
+    return result
+
+};
+
+var isSelfDividing = function (number) {
+    let arr = number.toString().split('');
+    let result = true;
+    for (let i = 0; i < arr.length; i++) {
+        if (number % Number(arr[i]) !== 0) {
+            result = false;
+        }
+    }
+
+    return result;
+}
