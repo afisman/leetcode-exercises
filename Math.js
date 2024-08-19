@@ -304,10 +304,29 @@ var maximum69Number = function (num) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === '6') {
             arr[i] = '9';
-            return Number(arr.join(''))
+            return Number(arr.join(''));
         }
     }
 
-    return num
+    return num;
+
+};
+
+//2578 Split with minimum sum
+
+var splitNum = function (num) {
+    let newStr = num.toString().split('').sort((a, b) => a - b);
+    let sum1 = '';
+    let sum2 = '';
+
+    for (let i = 0; i < newStr.length; i++) {
+        if (i == 0 || i % 2 == 0) {
+            sum1 = sum1 + newStr[i];
+        } else {
+            sum2 = sum2 + newStr[i];
+        }
+    }
+
+    return parseInt(sum1) + parseInt(sum2);
 
 };
