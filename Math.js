@@ -383,3 +383,21 @@ var checkPerfectNumber = function (num) {
     }
     return sum === num
 };
+
+//2396 Strictly palindromic number
+
+var isStrictlyPalindromic = function (n) {
+    for (let i = 2; i <= n - 2; i++) {
+        if (!isPalindromic(parseInt(n, i))) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+var isPalindromic = function (n) {
+    let n2 = n.toString().split('').reverse().join('');
+
+    return Number(n2) === n;
+}
