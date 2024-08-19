@@ -346,3 +346,19 @@ var divisorGame = function (n) {
 var divisorGame = function (n) {
     return n % 2 === 0
 };
+
+//2544 Alternating digit sum
+
+var alternateDigitSum = function (n) {
+    let sum = 0;
+    let arr = n.toString().split('');
+
+    for (let i = 0; i < arr.length; i++) {
+        if (i === 0 || i % 2 === 0) {
+            sum += Number(arr[i]);
+        } else {
+            sum -= Number(arr[i]);
+        }
+    }
+    return sum;
+};
