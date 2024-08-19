@@ -330,3 +330,15 @@ var splitNum = function (num) {
     return parseInt(sum1) + parseInt(sum2);
 
 };
+
+//1025 Divisor game
+
+var divisorGame = function (n) {
+    let count = 0;
+    while (n > 1) {
+        n -= 1
+        count++
+    }
+    return count % 2 !== 0
+
+};
