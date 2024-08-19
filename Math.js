@@ -362,3 +362,9 @@ var alternateDigitSum = function (n) {
     }
     return sum;
 };
+
+//292 Nim game
+
+var canWinNim = function (n) {
+    return n % 4;
+};
