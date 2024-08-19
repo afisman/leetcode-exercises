@@ -342,3 +342,7 @@ var divisorGame = function (n) {
     return count % 2 !== 0
 
 };
+
+var divisorGame = function (n) {
+    return n % 2 === 0
+};
