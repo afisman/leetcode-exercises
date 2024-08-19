@@ -368,3 +368,18 @@ var alternateDigitSum = function (n) {
 var canWinNim = function (n) {
     return n % 4;
 };
+
+//507 Check perfect number
+
+var checkPerfectNumber = function (num) {
+    if (num % 2) return false
+    let sum = 0;
+    let x = 1;
+    while (x <= num / 2) {
+        if (num % x === 0) {
+            sum += x;
+        }
+        x++
+    }
+    return sum === num
+};
