@@ -993,3 +993,15 @@ var numberOfEmployeesWhoMetTarget = function (hours, target) {
     }
     return count;
 };
+
+//1432 Kids with the greatest number of candies
+
+var kidsWithCandies = function (candies, extraCandies) {
+    let arr = [];
+    let maxNum = Math.max(...candies);
+    for (let i = 0; i < candies.length; i++) {
+        arr.push(candies[i] + extraCandies >= maxNum)
+    }
+
+    return arr;
+};
