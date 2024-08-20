@@ -1039,3 +1039,38 @@ var timeRequiredToBuy = function (tickets, k) {
     return time;
 
 };
+
+//2085 Count common words with one occurrence
+
+var countWords = function (words1, words2) {
+    let count = 0;
+    let map = new Map();
+    let n = Math.max(words1.length, words2.length);
+
+    for (let i = 0; i < n; i++) {
+        if (words1[i]) {
+            let exists = map.get(words1[i]);
+            if (!exists) {
+                map.set(words1[i], [1, 0])
+            } else {
+                map.set(words1[i], [exists[0] + 1, exists[1]])
+            }
+        }
+
+        if (words2[i]) {
+            let exists = map.get(words2[i]);
+            if (!exists) {
+                map.set(words2[i], [0, 1])
+            } else {
+                map.set(words2[i], [exists[0], exists[1] + 1])
+            }
+        }
+    }
+
+    for (let [key, value] of map) {
+        if (value[0] == 1 && value[1] == 1) {
+            count++
+        }
+    }
+    return count;
+};
