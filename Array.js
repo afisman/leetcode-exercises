@@ -1074,3 +1074,28 @@ var countWords = function (words1, words2) {
     }
     return count;
 };
+
+//2089 Find target inidices after sorting array
+
+var targetIndices = function (nums, target) {
+    let count1 = 0;
+    let count2 = 0;
+    let result = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] == target) {
+            count1++;
+        }
+        if (nums[i] < target) {
+            count2++;
+        }
+    }
+
+    while (count1 > 0) {
+        result.unshift(count1 + count2 - 1);
+        count1--;
+    }
+
+    return result;
+
+};
