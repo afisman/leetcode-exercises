@@ -1147,3 +1147,22 @@ var checkSubset = (parentArray, subsetArray) => {
 
     return result;
 }
+
+//2110 Number of Smooth descent periods of a stock
+
+var getDescentPeriods = function (prices) {
+    let count = 1, total = 0;
+
+    for (let i = 0; i < prices.length; i++) {
+        if (prices[i - 1] - 1 === prices[i]) {
+            count++;
+        } else {
+            count = 1;
+        }
+
+        total += count;
+    }
+
+    return total;
+
+};
