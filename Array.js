@@ -1166,3 +1166,18 @@ var getDescentPeriods = function (prices) {
     return total;
 
 };
+
+//2091 Removing minimum and maximum From array
+
+var minimumDeletions = function (nums) {
+    const len = nums.length;
+    let min = nums.indexOf(Math.min(...nums));
+    let max = nums.indexOf(Math.max(...nums));
+    if (min > max) [min, max] = [max, min];
+
+    let bothRemove = (len - max) + (min + 1);
+    let rightRemove = len - min;
+    let leftRemove = max + 1;
+
+    return Math.min(bothRemove, leftRemove, rightRemove)
+};
