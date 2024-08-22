@@ -1099,3 +1099,51 @@ var targetIndices = function (nums, target) {
     return result;
 
 };
+
+//2094 Finding 3-digit even numbers
+
+var findEvenNumbers = function (digits) {
+    let map = new Map();
+    let arr = [];
+
+    for (let i = 100; i < 1000; i += 2) {
+        let arr2 = i.toString().split('');
+        if (checkSubset(digits, arr2) === true) {
+            arr.push(i);
+        }
+    }
+
+    return arr;
+};
+
+var checkSubset = (parentArray, subsetArray) => {
+    let map1 = new Map();
+    let map2 = new Map();
+    let result = true;
+
+    for (let i = 0; i < parentArray.length; i++) {
+        let amount = map1.get(parentArray[i]);
+        if (!amount) {
+            map1.set(parentArray[i], 1);
+        } else {
+            map1.set(parentArray[i], amount + 1);
+        }
+    }
+
+    for (let j = 0; j < subsetArray.length; j++) {
+        let amount = map2.get(Number(subsetArray[j]));
+        if (!amount) {
+            map2.set(Number(subsetArray[j]), 1);
+        } else {
+            map2.set(Number(subsetArray[j]), amount + 1);
+        }
+    }
+
+    for (let [key, value] of map2) {
+        if (map1.get(key) < map2.get(key) || !map1.get(key)) {
+            result = false;
+        }
+    }
+
+    return result;
+}
