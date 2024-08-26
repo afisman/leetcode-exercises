@@ -111,3 +111,23 @@ var numSquares = function (n) {
 
     return dp[n]
 };
+
+//
+
+var postorder = function (root) {
+    if (!root) return [];
+
+    let stack = [root];
+    let result = [];
+
+    while (stack.length > 0) {
+        let node = stack.pop();
+        result.push(node.val);
+
+        for (let child of node.children) {
+            stack.push(child);
+        }
+    }
+
+    return result.reverse();
+};
