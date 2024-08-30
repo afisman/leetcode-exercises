@@ -1198,3 +1198,16 @@ var countPairs = function (nums, target) {
 
     return count
 };
+
+//
+
+var findDifference = function(nums1, nums2) {
+    let set1= new Set(nums1);
+    let set2= new Set(nums2);
+    
+    nums2.forEach(e=>{set1.delete(e)});
+    nums1.forEach(e=>{set2.delete(e)});
+
+    return [[...set1], [...set2]]
+    
+};
