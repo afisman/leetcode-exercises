@@ -582,3 +582,27 @@ var findPermutationDifference = function (s, t) {
     return count;
 
 };
+
+//1071 Greatest common denominator of strings
+
+var gcdOfStrings = function(str1, str2) {
+    if(str1 + str2 !== str2 + str1) return "";
+    let len1 = str1.length;
+    let len2 = str2.length;
+
+    let gcd;
+
+    if(len1 > len2) {
+        gcd = GCD(len1, len2);
+    } else {
+        gcd = GCD(len2, len1);
+    }
+
+    return str1.substring(0, gcd);
+};
+
+function GCD(a,b) {
+    if(b == 0) return a;
+
+    return GCD(b, a%b)
+}
